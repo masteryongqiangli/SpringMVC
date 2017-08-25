@@ -53,6 +53,6 @@
 		<session-timeout>-1</session-timeout>
 	</session-config>
     <welcome-file-list>
-		<welcome-file>webpages/system/login.jsp</welcome-file>
+		<welcome-file>webpages/system/login/login.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>
