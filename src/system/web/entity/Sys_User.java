@@ -1,11 +1,19 @@
 package system.web.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
+@SuppressWarnings("serial")
 @Entity
-public class Sys_User {
+@Table(name="Sys_User")
+public class Sys_User implements Serializable{
 	private String userId;
 	private String userName;
 	private String realName;
@@ -19,6 +27,8 @@ public class Sys_User {
 	private String roleName;
 	@Id
 	@Column(length=50)
+	@GenericGenerator(name="systemUUID",strategy="uuid")
+	@GeneratedValue(generator="systemUUID")
 	public String getUserId() {
 		return userId;
 	}
@@ -95,6 +105,4 @@ public class Sys_User {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-	
-	
 }
