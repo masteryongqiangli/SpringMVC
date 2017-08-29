@@ -1,12 +1,15 @@
-package system.interceptor;
+package system.core.interceptor;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import system.core.util.ResourceUtil;
 /**
@@ -50,5 +53,18 @@ public class AuthInterceptor implements HandlerInterceptor{
 			return false;
 		}
 	}
-	
+	/**
+	 * 登录界面从定向
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @author yongqiangli
+	 */
+	public ModelAndView forward(HttpServletRequest request){
+		return new ModelAndView(new RedirectView("loginController.do?login"));
+	}
+	private void forward(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("webpages/system/login/login.jsp").forward(request, response);
+	}
 }

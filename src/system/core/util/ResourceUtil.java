@@ -1,4 +1,4 @@
-package system.util;
+package system.core.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,9 +10,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import system.core.enums.LoginStateTypeEnum;
-import system.web.entity.base.Sys_Base_Role;
-import system.web.entity.base.Sys_User;
+import system.core.enums.loginStateTypeEnum;
+import system.web.entity.Sys_BaseRole;
+import system.web.entity.Sys_User;
 /**
  * 
  * @author yongqiangli
@@ -51,19 +51,19 @@ public class ResourceUtil {
 	 * @return
 	 */
 	public static Sys_User getSys_User(){
-		return (Sys_User) getRequest().getSession().getAttribute(LoginStateTypeEnum.LOGIN_SUCCESS.getCode());
+		return (Sys_User) getRequest().getSession().getAttribute(loginStateTypeEnum.LOGIN_SUCCESS.getCode());
 	}
-	public static List<Sys_Base_Role> getSys_UserRoles() {
-		List<Sys_Base_Role> list =new ArrayList<>();
-		String ids[]=getSys_User().getRoleIdList().split(",");
+	public static List<Sys_BaseRole> getSys_UserRoles() {
+		List<Sys_BaseRole> list =new ArrayList<>();
+		String ids[]=getSys_User().getRoleId().split(",");
 		for (int i = 0; i < ids.length; i++) {
-			Sys_Base_Role role=new Sys_Base_Role();
+			Sys_BaseRole role=new Sys_BaseRole();
 			role.setRoleId(ids[i]);
 			list.add(role);
 		}
 		return list;
 	}
 	public static List<String> getSys_UserRoleList() {
-		return Arrays.asList(getSys_User().getRoleCodeList());
+		return Arrays.asList(getSys_User().getRoleCode());
 	}
 }
