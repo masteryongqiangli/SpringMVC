@@ -1,6 +1,7 @@
 package system.core.dao.impl;
 import java.io.Serializable;
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -47,6 +48,7 @@ public class BaseDaoImpl implements BaseDaoI{
 	 */
 	@Override
 	public <T> void batchSave(List<T> list) {
+		@SuppressWarnings("unused")
 		Serializable id;
 		try{
 			Session session = getSession();
