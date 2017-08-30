@@ -46,7 +46,7 @@
 		<!-- 注解方式配置 -->
 		<property name="packagesToScan">
 			<list>
-				<value>busine.entity.*</value>
+				<value>business.entity.*</value>
 				<value>system.web.entity.*</value>
 			</list>
 		</property>
