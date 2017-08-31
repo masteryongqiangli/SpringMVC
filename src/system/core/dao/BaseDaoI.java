@@ -5,6 +5,8 @@ import java.util.List;
 
 
 
+import java.util.Map;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 public interface BaseDaoI {
@@ -27,7 +29,7 @@ public interface BaseDaoI {
 	 * @param object
 	 * @return
 	 */
-	public <T> List<T> getListByItems(Class<T> entityClass,String items,Object object);
+	public <T> List<T> getListByItems(Class<T> entityClass,Map<String, String> map);
 	
 	public <T> List<T> getListByItemsIsNull(Class<T> entityClass,String items);
 	

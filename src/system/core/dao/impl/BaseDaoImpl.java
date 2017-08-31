@@ -1,12 +1,14 @@
 package system.core.dao.impl;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -105,19 +107,37 @@ public class BaseDaoImpl implements BaseDaoI{
 	public <T> T get(Class<T> entityClass, Serializable id) {
 		return getSession().get(entityClass, id);
 	}
+	
 	/**
-	 * 批量获取实体对象
+	 * 根据条件获取实体对象
 	 * @param entityClass
-	 * @param items
-	 * @param object
+	 * @param dataMap 查询条件组成的map<id=12222>
+	 * @param pageMap 分页参数
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	@Override
-	public <T> List<T> getListByItems(Class<T> entityClass, String items,
-			Object object) {
-		return createCriteria(entityClass).add(Restrictions.eq(items, object)).list();
+	public <T> List<T> getListByItems(Class<T> entityClass, Map<String, String> dataMap,Map<String, String> pageMap) {
+		Criteria criteria = this.createCriteria(entityClass);
+		Disjunction disjunction = Restrictions.disjunction();
+		for(String key:dataMap.keySet()){
+			disjunction.add(Restrictions.eq(key, dataMap.get(key)));
+		}
+		if (!pageMap.isEmpty()) {
+			int pageNumber = Integer.parseInt(pageMap.get("page"));
+			int pageRows = Integer.parseInt(pageMap.get("rows"));
+			int startNumber = (pageNumber-1)*pageRows;
+			criteria.setFirstResult(startNumber);
+			criteria.setMaxResults(pageRows);
+		}
+		return criteria.add(disjunction).list();
 	}
+	
+	
+	
+	
+	
+	
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> List<T> getListByItemsIsNull(Class<T> entityClass, String items) {
