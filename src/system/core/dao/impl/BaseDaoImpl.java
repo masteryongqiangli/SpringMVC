@@ -3,6 +3,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.json.JSONObject;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -113,7 +115,7 @@ public class BaseDaoImpl implements BaseDaoI{
 	 * @param entityClass
 	 * @param dataMap 查询条件组成的map<id=12222>
 	 * @param pageMap 分页参数
-	 * @return
+	 * @return {@link JSONObject}
 	 */
 	@SuppressWarnings("unchecked")
 	public <T> List<T> getListByItems(Class<T> entityClass, Map<String, String> dataMap,Map<String, String> pageMap) {
@@ -132,23 +134,6 @@ public class BaseDaoImpl implements BaseDaoI{
 		return criteria.add(disjunction).list();
 	}
 	
-	
-	
-	
-	
-	
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public <T> List<T> getListByItemsIsNull(Class<T> entityClass, String items) {
-		return createCriteria(entityClass).add(Restrictions.isNull(items)).list();
-	}
-	@SuppressWarnings("unchecked")
-	@Override
-	public <T> List<T> getListByItemsIsNotNull(Class<T> entityClass,
-			String items) {
-		return createCriteria(entityClass).add(Restrictions.isNotNull(items)).list();
-	}
 	/**
 	 * 删除实体对象
 	 * @param tableName

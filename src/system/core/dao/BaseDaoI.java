@@ -23,17 +23,13 @@ public interface BaseDaoI {
 	public <T> T get(Class<T> entityClass,final Serializable id);
 	
 	/**
-	 * 根据属性获取对象列表
-	 * @param entityClass
-	 * @param items
-	 * @param object
+	 * 根据条件查询
+	 * @param entityClass 实体对象
+	 * @param itemMap  查询条件
+	 * @param pageMap  分页参数
 	 * @return
 	 */
-	public <T> List<T> getListByItems(Class<T> entityClass,Map<String, String> map);
-	
-	public <T> List<T> getListByItemsIsNull(Class<T> entityClass,String items);
-	
-	public <T> List<T> getListByItemsIsNotNull(Class<T> entityClass,String items);
+	public <T> List<T> getListByItems(Class<T> entityClass,Map<String, String> itemMap,Map<String, String> pageMap);
 	
 	public void deleteByItems(String tableName,String items,String value);
 	
