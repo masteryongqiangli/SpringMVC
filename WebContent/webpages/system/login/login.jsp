@@ -56,34 +56,28 @@ td label {
 <script type="text/javascript">
 	$("#userName").blur(function() {
 		alert(1)
-		$.ajax({
-			url : "loginController.do?checkUser",
-			type : "get",
-			async : false,
-			dataType: 'json',
-			data : {ueerName:$(this).val()},
-			success : function() {
-				alert(2)
-			},
-			error : function(){
-				alert(3)
-			}
+
+		$.post("loginController.do?checkUser", function(data, status) {
+			alert(2);
 		});
-	})
+	});
+
 	$("#loginSubmit").click(function() {
 		if ($("#userName").val() == "") {
 			($("#NULL_USER").show())
-		}else if ($("#password").val() == "") {
+		} else if ($("#password").val() == "") {
 			($("#NULL_PSWD").show())
-		}else{
+		} else {
 			$.ajax({
 				url : "loginController.do?checkUser",
 				type : "get",
 				async : false,
-				dataType: 'json',
-				data : {ueerName:$(this).val()},
+				dataType : 'json',
+				data : {
+					ueerName : $("#userName").val()
+				},
 				success : function(data) {
-					
+
 				}
 			});
 		}

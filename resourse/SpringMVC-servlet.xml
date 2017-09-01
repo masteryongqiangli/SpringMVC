@@ -53,11 +53,11 @@
 	</bean>
 
 
-	<context:component-scan base-package="system.web.*">
+	<context:component-scan base-package="system.web.controller.*">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-	<context:component-scan base-package="business.*" />
+	<context:component-scan base-package="business.controller.*" />
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 	<mvc:annotation-driven />
@@ -83,7 +83,7 @@
 			<bean class="system.core.interceptor.AuthInterceptor">
 				<property name="excludeUrls">
 					<list>
-						<value>loginController.do?checkuser</value>
+						<value>loginController.do?checkUser</value>
 						<value>loginController.do?login</value>
 						<value>loginController.do?logout</value>
 						<value>login.do?null</value>
