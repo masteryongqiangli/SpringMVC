@@ -4,18 +4,22 @@ import javax.servlet.http.HttpServletRequest;
 
 import net.sf.json.JSONObject;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import system.core.annotation.Log;
-import system.web.entity.Sys_BaseUser;
+import system.core.controller.BaseController;
 import system.web.service.LoginServiceI;
 
 @Controller
-public class LoginController {
-	
+@RequestMapping(params="loginController")
+@Scope
+public class LoginController extends BaseController{
+	@Autowired
 	LoginServiceI loginServiceI;
 	/**
 	 * 验证用户名是否存在
@@ -24,10 +28,11 @@ public class LoginController {
 	 */
 	@RequestMapping(params="checkUser")
 	@ResponseBody
-	@Log(operationName="验证用户名",operationType=1)
-	public Sys_BaseUser checkUser(HttpServletRequest request,Sys_BaseUser sys_BaseUser){
-		Sys_BaseUser loginUser = loginServiceI.checkLogin(sys_BaseUser,request);
-		return loginUser;
+	public JSONObject checkUser(HttpServletRequest request){
+		/*Sys_BaseUser loginUser = loginServiceI.checkLogin(sys_BaseUser,request);
+		return loginUser;*/
+		JSONObject jsonObject = new JSONObject();
+		return jsonObject;
 	}
 	/**
 	 * 系统登录

@@ -30,7 +30,7 @@ td label {
 </style>
 </head>
 <body>
-	<form action="loginController.do?login" method='post'
+	<form action="LoginController.do?login" method='post'
 		enctype="application/x-www-form-urlencoded">
 		<div class="divCenter">
 			<table>
@@ -55,23 +55,38 @@ td label {
 </body>
 <script type="text/javascript">
 	$("#userName").blur(function() {
+		alert(1)
 		$.ajax({
 			url : "loginController.do?checkUser",
-			type : "post",
+			type : "get",
+			async : false,
+			dataType: 'json',
 			data : {ueerName:$(this).val()},
-			success : function(data) {
-				
+			success : function() {
+				alert(2)
+			},
+			error : function(){
+				alert(3)
 			}
 		});
 	})
 	$("#loginSubmit").click(function() {
 		if ($("#userName").val() == "") {
 			($("#NULL_USER").show())
-		}
-		if ($("#password").val() == "") {
+		}else if ($("#password").val() == "") {
 			($("#NULL_PSWD").show())
+		}else{
+			$.ajax({
+				url : "loginController.do?checkUser",
+				type : "get",
+				async : false,
+				dataType: 'json',
+				data : {ueerName:$(this).val()},
+				success : function(data) {
+					
+				}
+			});
 		}
-
 	})
 	$("#userName").click(function() {
 		$(this).parent().find('label').hide();
