@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import system.core.annotation.Log;
+import system.web.entity.Sys_BaseUser;
 import system.web.service.LoginServiceI;
 
 @Controller
@@ -24,10 +25,9 @@ public class LoginController {
 	@RequestMapping(params="checkUser")
 	@ResponseBody
 	@Log(operationName="验证用户名",operationType=1)
-	public JSONObject checkUser(HttpServletRequest request){
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("msg", loginServiceI.checkUser(request.getParameter("userName")));
-		return jsonObject;
+	public Sys_BaseUser checkUser(HttpServletRequest request,Sys_BaseUser sys_BaseUser){
+		Sys_BaseUser loginUser = loginServiceI.checkLogin(sys_BaseUser,request);
+		return loginUser;
 	}
 	/**
 	 * 系统登录

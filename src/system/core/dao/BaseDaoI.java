@@ -21,7 +21,6 @@ public interface BaseDaoI {
 	 * @return
 	 */
 	public <T> T get(Class<T> entityClass,final Serializable id);
-	
 	/**
 	 * 根据条件查询
 	 * @param entityClass 实体对象
@@ -29,7 +28,8 @@ public interface BaseDaoI {
 	 * @param pageMap  分页参数
 	 * @return
 	 */
-	public <T> List<T> getListByItems(Class<T> entityClass,Map<String, String> itemMap,Map<String, String> pageMap);
+	@SuppressWarnings("rawtypes")
+	public <T> List<T> getListByItems(Class entityClass,Map<String, String> itemMap,Map<String, String> pageMap);
 	
 	public void deleteByItems(String tableName,String items,String value);
 	

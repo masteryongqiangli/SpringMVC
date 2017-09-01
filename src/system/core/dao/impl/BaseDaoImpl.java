@@ -117,8 +117,8 @@ public class BaseDaoImpl implements BaseDaoI{
 	 * @param pageMap ·ÖÒ³²ÎÊý
 	 * @return {@link JSONObject}
 	 */
-	@SuppressWarnings("unchecked")
-	public <T> List<T> getListByItems(Class<T> entityClass, Map<String, String> dataMap,Map<String, String> pageMap) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public <T> List<T> getListByItems(Class entityClass, Map<String, String> dataMap,Map<String, String> pageMap) {
 		Criteria criteria = this.createCriteria(entityClass);
 		Disjunction disjunction = Restrictions.disjunction();
 		for(String key:dataMap.keySet()){
