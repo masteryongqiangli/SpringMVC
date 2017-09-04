@@ -5,8 +5,7 @@
 <link rel="stylesheet" type="text/css" href="Res/jquery-easyui-1.5.2/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="Res/jquery-easyui-1.5.2/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="Res/bootstrap-3.3.7/css/bootstrap.css">
-<script type="text/javascript" src="Res/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="Res/jquery.js"></script>
+<script type="text/javascript" src="Res/jquery-easyui-1.5.2/jquery.min.js"></script>
 <script type="text/javascript" src="Res/jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="Res/jquery-easyui-1.5.2/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="Res/bootstrap-3.3.7/js/bootstrap.js"></script>	

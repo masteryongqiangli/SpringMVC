@@ -53,18 +53,18 @@
 	</bean>
 
 
-	<context:component-scan base-package="system.web.controller.*">
+	<context:component-scan base-package="system.web.*"/>
+	<context:component-scan base-package="business.*">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-	<context:component-scan base-package="business.controller.*" />
+	
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 	<mvc:annotation-driven />
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	<!-- 静态资源配置 -->
 	<mvc:resources location="/Res/" mapping="/Res/**"></mvc:resources>
-	<mvc:resources location="/Res/" mapping="/WEB-INF/**"></mvc:resources>
 
 	<!-- 视图层配置 -->
 	<bean
