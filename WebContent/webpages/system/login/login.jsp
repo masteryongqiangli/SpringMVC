@@ -30,7 +30,7 @@ td label {
 </style>
 </head>
 <body>
-	<form action="LoginController.do?login" method='post'
+	<form action="loginController.do?login" method='post'
 		enctype="application/x-www-form-urlencoded">
 		<div class="divCenter">
 			<table>
@@ -55,10 +55,20 @@ td label {
 </body>
 <script type="text/javascript">
 	$("#userName").blur(function() {
-		alert(1)
-
-		$.post("loginController.do?checkUser", function(data, status) {
-			alert(2);
+		$.ajax({
+			url : "loginController.do?checkUser",
+			type : "post",
+			async : false,
+			dataType : 'json',
+			data : {
+				userName : $("#userName").val()
+			},
+			success : function(data) {
+				alert(1)
+			},
+			error:function(data){
+				alert(2)
+			}
 		});
 	});
 

@@ -46,8 +46,7 @@
 		<!-- 注解方式配置 -->
 		<property name="packagesToScan">
 			<list>
-				<value>system.web.entity.base</value>
-				<value>system.web.entity.buss</value>
+				<value>system.web.entity</value>
 				<value>business.entity</value>
 			</list>
 		</property>
@@ -78,14 +77,14 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="system.core.interceptors.EncodingInterceptor" />
+			<bean class="system.core.interceptor.EncodingInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="system.core.interceptors.AuthInterceptor">
+			<bean class="system.core.interceptor.AuthInterceptor">
 				<property name="excludeUrls">
 					<list>
-						<value>loginController.do?checkuser</value>
+						<value>loginController.do?checkUser</value>
 						<value>loginController.do?login</value>
 						<value>loginController.do?logout</value>
 						<value>login.do?null</value>

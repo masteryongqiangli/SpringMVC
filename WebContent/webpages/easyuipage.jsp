@@ -8,7 +8,6 @@
 <script type="text/javascript" src="Res/jquery-easyui-1.5.2/jquery.min.js"></script>
 <script type="text/javascript" src="Res/jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="Res/jquery-easyui-1.5.2/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="Res/bootstrap-3.3.7/js/bootstrap.js"></script>	
 <script>
 	
 	$.extend($.fn.validatebox.defaults.rules, {    
