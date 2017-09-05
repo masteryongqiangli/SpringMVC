@@ -16,7 +16,7 @@ import system.core.controller.BaseController;
 import system.web.service.LoginServiceI;
 
 @Controller
-@RequestMapping(params="loginController")
+@RequestMapping(params="/loginController")
 @Scope("prototype")
 public class LoginController extends BaseController{
 	@Autowired
