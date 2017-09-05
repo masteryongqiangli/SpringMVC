@@ -22,7 +22,7 @@
 		<property name="username" value="${jdbc.username}"></property>
 		<property name="password" value="${jdbc.password}"></property>
 	</bean>
-	<!-- 批量文件处理  -->
+
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="104857600" />
@@ -46,19 +46,20 @@
 		<!-- 注解方式配置 -->
 		<property name="packagesToScan">
 			<list>
+				<value>system.web.entity.base</value>
+				<value>system.web.entity.buss</value>
 				<value>business.entity</value>
-				<value>system.web.entity</value>
 			</list>
 		</property>
 	</bean>
 
 
-	<context:component-scan base-package="system.web.*"/>
-	<context:component-scan base-package="business.*">
+	<context:component-scan base-package="system.core.*" />
+	<context:component-scan base-package="system.web.*">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-	
+	<context:component-scan base-package="business.*" />
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 	<mvc:annotation-driven />
@@ -72,19 +73,19 @@
 		<property name="prefix" value="/webpages/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
- 
+ 	
 	<!-- 拦截器 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="system.core.interceptor.EncodingInterceptor" />
+			<bean class="system.core.interceptors.EncodingInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="system.core.interceptor.AuthInterceptor">
+			<bean class="system.core.interceptors.AuthInterceptor">
 				<property name="excludeUrls">
 					<list>
-						<value>loginController.do?checkLogin</value>
+						<value>loginController.do?checkuser</value>
 						<value>loginController.do?login</value>
 						<value>loginController.do?logout</value>
 						<value>login.do?null</value>

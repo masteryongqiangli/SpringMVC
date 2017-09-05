@@ -2,6 +2,7 @@ package system.core.service.impl;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -43,28 +44,18 @@ public class CommonServiceImpl implements CommonServiceI{
 	}
 
 	@Override
-	public <T> List<T> getListByItems(Class<T> entityClass, String items,Object object) {
-		return getListByItems(entityClass, items, object);
-	}
-
-	@Override
-	public <T> List<T> getListByItemsIsNull(Class<T> entityClass, String items) {
-		return getListByItemsIsNull(entityClass, items);
-	}
-
-	@Override
-	public <T> List<T> getListByItemsIsNotNull(Class<T> entityClass,String items) {
-		return getListByItemsIsNotNull(entityClass, items);
+	public <T> List<T> getListByItems(Class entityClass,Map<String, String> itemMap,Map<String, String> pageMap) {
+		return baseDaoI.getListByItems(entityClass, itemMap, pageMap);
 	}
 
 	@Override
 	public void deleteByItems(String tableName, String items, String value) {
-		deleteByItems(tableName, items, value);
+		baseDaoI.deleteByItems(tableName, items, value);
 	}
 
 	@Override
 	public int doUpdateHql(Session session, Query query) {
-		return doUpdateHql(session, query);
+		return baseDaoI.doUpdateHql(session, query);
 	}
 	
 }

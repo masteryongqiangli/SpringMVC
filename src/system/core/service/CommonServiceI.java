@@ -2,6 +2,7 @@ package system.core.service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -26,11 +27,8 @@ public interface CommonServiceI {
 	 * @param object
 	 * @return
 	 */
-	public <T> List<T> getListByItems(Class<T> entityClass,String items,Object object);
-	
-	public <T> List<T> getListByItemsIsNull(Class<T> entityClass,String items);
-	
-	public <T> List<T> getListByItemsIsNotNull(Class<T> entityClass,String items);
+	@SuppressWarnings("rawtypes")
+	public <T> List<T> getListByItems(Class entityClass,Map<String, String> itemMap,Map<String, String> pageMap);
 	
 	public void deleteByItems(String tableName,String items,String value);
 	
