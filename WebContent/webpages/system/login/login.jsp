@@ -46,7 +46,7 @@ td label {
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" style="width: 400px"><input type="button"
+					<td colspan="2" style="width: 400px"><input type="submit"
 						id="loginSubmit" style="margin-left: 45%;" value="登录" /></td>
 				</tr>
 			</table>
@@ -54,9 +54,9 @@ td label {
 	</form>
 </body>
 <script type="text/javascript">
-	$("#userName").blur(function() {
+	/* $("#userName").blur(function() {
 		$.ajax({
-			url : "loginController.do?checkUser",
+			url : "loginController.do?login",
 			type : "post",
 			async : false,
 			dataType : 'json',
@@ -97,6 +97,6 @@ td label {
 	})
 	$("#password").click(function() {
 		$(this).parent().find('label').hide();
-	})
+	}) */
 </script>
 </html>
