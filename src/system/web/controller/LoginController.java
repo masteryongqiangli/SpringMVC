@@ -27,7 +27,6 @@ public class LoginController extends BaseController{
 	 * @return {@link JSONObject}
 	 */
 	@RequestMapping(params="checkUser")
-	@ResponseBody
 	public JSONObject checkUser(HttpServletRequest request){
 		/*Sys_BaseUser loginUser = loginServiceI.checkLogin(sys_BaseUser,request);
 		return loginUser;*/

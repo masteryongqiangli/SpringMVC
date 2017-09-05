@@ -1,39 +1,38 @@
 package system.core.interceptor;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
 /**
  * 字符集拦截器
- * @author yongqiangli
+ * 
+ * @author  zry
+ * 
  */
-public class EncodingInterceptor implements HandlerInterceptor{
-	
+public class EncodingInterceptor implements HandlerInterceptor {
+
 	/**
-	 * 之后拦截
+	 * 在controller后拦截
 	 */
-	@Override
-	public void afterCompletion(HttpServletRequest arg0,
-			HttpServletResponse arg1, Object arg2, Exception arg3)
-			throws Exception {
-		arg0.setCharacterEncoding("UTF-8");
-		arg1.setCharacterEncoding("UTF-8");
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object object, Exception exception) throws Exception {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 	}
 
-	@Override
-	public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1,
-			Object arg2, ModelAndView arg3) throws Exception {
-		
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object object, ModelAndView modelAndView) throws Exception {
+
 	}
+
 	/**
-	 * 之前拦截
+	 * 在controller前拦截
 	 */
-	@Override
-	public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1,
-			Object arg2) throws Exception {
-		arg0.setCharacterEncoding("UTF-8");
-		arg1.setCharacterEncoding("UTF-8");
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		return true;
 	}
-	
+
 }
