@@ -2,13 +2,17 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="Res/jquery-easyui-1.5.2/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="Res/jquery-easyui-1.5.2/themes/icon.css">
-<link rel="stylesheet" type="text/css" href="Res/bootstrap-3.3.7/css/bootstrap.css">
-<script type="text/javascript" src="Res/jquery-easyui-1.5.2/jquery.min.js"></script>
-<script type="text/javascript" src="Res/jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="Res/jquery-easyui-1.5.2/locale/easyui-lang-zh_CN.js"></script>
-<script>
+<link rel="stylesheet" type="text/css"
+	href="Res/jquery-easyui-1.5.1/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="Res/jquery-easyui-1.5.1/themes/icon.css">
+<script type="text/javascript"
+	src="Res/jquery-easyui-1.5.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="Res/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+<script type="text/javascript"
+	src="Res/jquery-easyui-1.5.1/locale/easyui-lang-zh_CN.js"></script>	
+	<script>
 	
 	$.extend($.fn.validatebox.defaults.rules, {    
 		strlength: {    

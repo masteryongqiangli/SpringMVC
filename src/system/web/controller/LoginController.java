@@ -7,6 +7,7 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,13 +25,14 @@ public class LoginController extends BaseController{
 	/**
 	 * 验证用户名是否存在
 	 * @param request
-	 * @return {@link JSONObject}
+	 * @return 
 	 */
 	@RequestMapping(params="checkUser")
+	@ResponseBody
 	public JSONObject checkUser(HttpServletRequest request){
-		/*Sys_BaseUser loginUser = loginServiceI.checkLogin(sys_BaseUser,request);
-		return loginUser;*/
+		String userName = request.getParameter("userName");
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("userName", userName);
 		return jsonObject;
 	}
 	/**
