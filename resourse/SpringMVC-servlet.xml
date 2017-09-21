@@ -43,7 +43,7 @@
 				<prop key="current_session_context_class">thread</prop>
 			</props>
 		</property>
-		<!-- 注解方式配置 -->
+		<!-- 注解方式配置    扫描实体所在的包-->
 		<property name="packagesToScan">
 			<list>
 				<value>system.web.entity</value>
@@ -53,12 +53,11 @@
 	</bean>
 
 
-	<context:component-scan base-package="system.core.*" />
-	<context:component-scan base-package="system.web.*">
+	<context:component-scan base-package="system.web.controller">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-	<context:component-scan base-package="business.*" />
+	<context:component-scan base-package="business.controller" />
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 	<mvc:annotation-driven />

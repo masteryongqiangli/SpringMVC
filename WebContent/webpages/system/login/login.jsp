@@ -54,7 +54,7 @@ td label {
 	</form>
 </body>
 <script type="text/javascript">
-	/* $("#userName").blur(function() {
+	$("#userName").blur(function() {
 		$.ajax({
 			url : "loginController.do?login",
 			type : "post",
@@ -72,7 +72,7 @@ td label {
 		});
 	});
 
-	$("#loginSubmit").click(function() {
+	/* $("#loginSubmit").click(function() {
 		if ($("#userName").val() == "") {
 			($("#NULL_USER").show())
 		} else if ($("#password").val() == "") {
