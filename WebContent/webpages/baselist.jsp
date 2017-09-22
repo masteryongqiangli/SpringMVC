@@ -5,9 +5,9 @@
 <link rel="stylesheet" type="text/css"
 	href="Res/styles/item-list.css">
 	<link rel="stylesheet" type="text/css"
-	href="Res/jquery-easyui-1.5.2/easyuiloading.css">
+	href="Res/jquery-easyui-1.5.1/easyuiloading.css">
 <script type="text/javascript"
-	src="Res/jquery-easyui-1.5.2/easyuiloading.js"></script>
+	src="Res/jquery-easyui-1.5.1/easyuiloading.js"></script>
 	<script type="text/javascript">
 	$(function() {
  		if('${auth.addAuth}'!='true'){

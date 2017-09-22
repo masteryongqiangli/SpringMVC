@@ -12,4 +12,8 @@ public interface LoginServiceI extends CommonServiceI{
 	 * @return
 	 */
 	public Sys_BaseUser checkLogin(Sys_BaseUser sys_BaseUser,HttpServletRequest request);
+
+	public boolean checkUserName(String parameter);
+
+	public boolean checkUserPswd(String endcoderByMd5Utile);
 }

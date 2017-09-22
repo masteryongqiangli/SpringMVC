@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import system.core.annotation.Log;
 import system.core.controller.BaseController;
+import system.core.enums.loginStateTypeEnum;
+import system.core.util.EncoderByMd5Util;
 import system.web.service.LoginServiceI;
 
 @Controller
@@ -22,19 +24,6 @@ import system.web.service.LoginServiceI;
 public class LoginController extends BaseController{
 	@Autowired
 	LoginServiceI loginServiceI;
-	/**
-	 * 验证用户名是否存在
-	 * @param request
-	 * @return 
-	 */
-	@RequestMapping(params="checkUser")
-	@ResponseBody
-	public JSONObject checkUser(HttpServletRequest request){
-		String userName = request.getParameter("userName");
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("userName", userName);
-		return jsonObject;
-	}
 	/**
 	 * 系统登录
 	 * @param request
@@ -45,5 +34,27 @@ public class LoginController extends BaseController{
 	@Log(operationName="跳转登录页面",operationType=1)
 	public ModelAndView login(HttpServletRequest request){
 		return new ModelAndView("system/main/main");
+	}
+	/**
+	 * 验证用户名是否存在
+	 * @param request
+	 * @return 
+	 */
+	@SuppressWarnings("static-access")
+	@RequestMapping(params="checkLogin")
+	@ResponseBody
+	public JSONObject checkLogin(HttpServletRequest request){
+		JSONObject jsonObject = new JSONObject();
+		if (loginServiceI.checkUserName(request.getParameter("userName"))) {
+			EncoderByMd5Util byMd5Util = new EncoderByMd5Util();
+			if (loginServiceI.checkUserPswd(byMd5Util.endcoderByMd5Utile(request.getParameter("userPswd")))) {
+				
+			}else{
+				jsonObject.put("msg", loginStateTypeEnum.ERROR_PASSWD);
+			}
+		}else{
+			jsonObject.put("msg", loginStateTypeEnum.NO_USER);
+		}
+		return jsonObject;
 	}
 }
