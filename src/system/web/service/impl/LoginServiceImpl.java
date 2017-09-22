@@ -38,16 +38,4 @@ public class LoginServiceImpl extends CommonServiceImpl implements LoginServiceI
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	@Override
-	public Sys_BaseUser getLoginUser(Sys_BaseUser sys_BaseUser) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Sys_User getSysUserById(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

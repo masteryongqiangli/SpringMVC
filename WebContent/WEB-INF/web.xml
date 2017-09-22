@@ -39,18 +39,18 @@
     </filter-mapping>
     <!-- 前端控制器 -->
     <servlet>
-        <servlet-name>SpringMVC</servlet-name>
+        <servlet-name>springMVC</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!-- 加载/WEB-INF/[servlet-name]-servlet.xml -->
         <init-param>
 			<description>Spring MVC 配置文件</description>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath*:SpringMVC-servlet.xml</param-value>
+			<param-value>classpath*:springMVC-servlet.xml</param-value>
 		</init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SpringMVC</servlet-name>
+        <servlet-name>springMVC</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
     <session-config>

@@ -21,9 +21,9 @@ import system.web.entity.Sys_User;
 import system.web.service.LoginServiceI;
 import system.web.service.Sys_BaseUserServiceI;
 
-@Controller
-@RequestMapping(params="/loginController")
 @Scope("prototype")
+@RequestMapping(params="/loginController")
+@Controller
 public class LoginController extends BaseController{
 	@Autowired
 	LoginServiceI loginServiceI;

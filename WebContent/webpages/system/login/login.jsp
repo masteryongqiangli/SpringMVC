@@ -27,10 +27,10 @@
 
 			//鼠标按下时候的x轴的位置
 			handler.mousedown(function(e) {
-				if($("#userName").val()==""||$("#userPaswd").val()==""){
-					isMove=false;
-				}else{
+				if($("#userName").val()!=""&&$("#userPaswd").val()!=""){
 					isMove = true;
+				}else{
+					isMove = false;
 				}
 				x = e.pageX - parseInt(handler.css('left'), 10);
 			});
@@ -70,9 +70,6 @@
 				drag.css({
 					'color' : '#fff'
 				});
-				handler.unbind('mousedown');
-				$(document).unbind('mousemove');
-				$(document).unbind('mouseup');
 				$.ajax({
 			        type: "post",
 			        cache:false, 
@@ -80,15 +77,22 @@
 			        url: 'loginController.do?checkLogin',
 			        data: {'userName':$("userName").val(),'passWord':$("#userPswd").val()},
 			        success: function (data) {
-			        	
+			        	if(data.msg=="LOGIN_SUCCESS"){
+			        		handler.unbind('mousedown');
+							$(document).unbind('mousemove');
+							$(document).unbind('mouseup');
+			        	}
 			        },
 			        error:function(data){
+			        	handler.removeClass('handler_ok_bg').addClass('handler_bg');
 			        	handler.css({
 							'left' : 0
 						});
 						drag_bg.css({
 							'width' : 0
 						});
+						text.text('拖动滑块登录');
+						$("#LOGIN_ERROR").show();
 			        }
 			    });
 			}
@@ -113,6 +117,7 @@
 						<input id="userName" name="userName" type="text" placeholder="用户名"/>
 						<label id="USER_NULL" style="display:none">用户名不能为空</label>
 						<label id="NO_USER" style="display:none">用户名不存在</label>
+						<label id="LOGIN_ERROR" style="display:none">无法登陆，请联系管理员</label>
 					</div>
 					<div class="userInput userPswdClass">
 						<input id="userPswd" name="passWord" type="password" placeholder="密码"/>
@@ -147,6 +152,9 @@
 			if($(this).val()!=""){
 				$('#userPswd').nextAll('label').hide();
 			}
+		});
+		$("#userName").focus(function(){
+			$('#LOGIN_ERROR').hide();
 		});
 	</script>
 </body>
