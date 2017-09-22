@@ -16,6 +16,8 @@ import system.core.annotation.Log;
 import system.core.controller.BaseController;
 import system.core.enums.loginStateTypeEnum;
 import system.core.util.EncoderByMd5Util;
+import system.web.entity.Sys_BaseUser;
+import system.web.entity.Sys_User;
 import system.web.service.LoginServiceI;
 
 @Controller
@@ -24,6 +26,8 @@ import system.web.service.LoginServiceI;
 public class LoginController extends BaseController{
 	@Autowired
 	LoginServiceI loginServiceI;
+	@Autowired
+	
 	/**
 	 * ÏµÍ³µÇÂ¼
 	 * @param request
@@ -40,15 +44,18 @@ public class LoginController extends BaseController{
 	 * @param request
 	 * @return 
 	 */
-	@SuppressWarnings("static-access")
+	@SuppressWarnings({ "static-access" })
 	@RequestMapping(params="checkLogin")
 	@ResponseBody
-	public JSONObject checkLogin(HttpServletRequest request){
+	public JSONObject checkLogin(HttpServletRequest request,Sys_BaseUser sys_BaseUser){
 		JSONObject jsonObject = new JSONObject();
-		if (loginServiceI.checkUserName(request.getParameter("userName"))) {
+		Sys_BaseUser loginUser = loginServiceI.getLoginUser(sys_BaseUser);
+		if (loginUser!=null) {
 			EncoderByMd5Util byMd5Util = new EncoderByMd5Util();
-			if (loginServiceI.checkUserPswd(byMd5Util.endcoderByMd5Utile(request.getParameter("userPswd")))) {
-				
+			if (loginUser.getPassWord().equals((byMd5Util.endcoderByMd5Utile(sys_BaseUser.getPassWord())))) {
+				Sys_User sys_User = loginServiceI.getSysUserById(loginUser.getUserId());
+				request.getSession().setAttribute(loginStateTypeEnum.LOGIN_SUCCESS.getCode(), sys_User);
+				jsonObject.put("msg", loginStateTypeEnum.LOGIN_SUCCESS);
 			}else{
 				jsonObject.put("msg", loginStateTypeEnum.ERROR_PASSWD);
 			}
