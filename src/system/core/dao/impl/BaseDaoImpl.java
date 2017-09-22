@@ -1,6 +1,5 @@
 package system.core.dao.impl;
 import java.io.Serializable;
-
 import java.util.List;
 import java.util.Map;
 
@@ -166,5 +165,9 @@ public class BaseDaoImpl implements BaseDaoI{
 	public <T> Criteria createCriteria(Class<T> entiClass){
 		Criteria criteria = getSession().createCriteria(entiClass);
 		return criteria;
+	}
+	@SuppressWarnings("unchecked")
+	public <T> List<T> findByProperty(Class<T> entityClass, String propertyName, Object value) {
+		return  createCriteria(entityClass).add(Restrictions.eq(propertyName, value)).list();
 	}
 }

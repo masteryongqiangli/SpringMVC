@@ -15,8 +15,9 @@ public class Sys_BaseUserServiceImpl extends CommonServiceImpl implements Sys_Ba
 	@Autowired
 	Sys_BaseUserDaoI Sys_BaseUserDaoI;
 	@Override
+	
 	public Sys_BaseUser getLoginUser(Sys_BaseUser sys_BaseUser) {
-		return null;
+		return Sys_BaseUserDaoI.getLoginUser(sys_BaseUser);
 	}
 
 	@Override

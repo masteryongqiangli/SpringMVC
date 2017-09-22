@@ -6,8 +6,8 @@ import system.web.entity.Sys_User;
 
 public interface Sys_BaseUserServiceI extends CommonServiceI{
 
-	Sys_BaseUser getLoginUser(Sys_BaseUser sys_BaseUser);
+	public Sys_BaseUser getLoginUser(Sys_BaseUser sys_BaseUser);
 
-	Sys_User getSysUserById(String userId);
+	public Sys_User getSysUserById(String userId);
 
 }

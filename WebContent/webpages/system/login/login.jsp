@@ -78,7 +78,7 @@
 			        cache:false, 
 			        async:false, 
 			        url: 'loginController.do?checkLogin',
-			        data: {'userName':$("userName").val(),'userPswd':$("#userPswd").val()},
+			        data: {'userName':$("userName").val(),'passWord':$("#userPswd").val()},
 			        success: function (data) {
 			        	
 			        },
@@ -107,18 +107,20 @@
 					yongqiangli
 				</h1>
 			</div>
-			<div class="middle">
-				<div class="userInput userNameClass">
-					<input id="userName" type="text" placeholder="用户名"/>
-					<label id="USER_NULL" style="display:none">用户名不能为空</label>
-					<label id="NO_USER" style="display:none">用户名不存在</label>
+			<form id="loginForm">
+				<div class="middle">
+					<div class="userInput userNameClass">
+						<input id="userName" name="userName" type="text" placeholder="用户名"/>
+						<label id="USER_NULL" style="display:none">用户名不能为空</label>
+						<label id="NO_USER" style="display:none">用户名不存在</label>
+					</div>
+					<div class="userInput userPswdClass">
+						<input id="userPswd" name="passWord" type="password" placeholder="密码"/>
+						<label id="PASSWD_NULL" style="display:none">密码不能为空</label>
+						<label id="ERROR_PASSWD" style="display:none">密码错误</label>
+					</div>
 				</div>
-				<div class="userInput userPswdClass">
-					<input id="userPswd" type="password" placeholder="密码"/>
-					<label id="PASSWD_NULL" style="display:none">密码不能为空</label>
-					<label id="ERROR_PASSWD" style="display:none">密码错误</label>
-				</div>
-			</div>
+			</form>
 			<div id="drag"></div>
 		</div>
 	</div>
