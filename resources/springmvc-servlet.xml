@@ -53,12 +53,12 @@
 	</bean>
 
 
-	<context:component-scan base-package="system.core.*" />
-	<context:component-scan base-package="system.web.*">
+	<context:component-scan base-package="system.core.controller" />
+	<context:component-scan base-package="business.controller" />
+	<context:component-scan base-package="system.web.controller">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-	<context:component-scan base-package="business.*" />
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 	<mvc:annotation-driven />
