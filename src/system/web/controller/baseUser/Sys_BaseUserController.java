@@ -1,4 +1,4 @@
-package system.web.controller;
+package system.web.controller.baseUser;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

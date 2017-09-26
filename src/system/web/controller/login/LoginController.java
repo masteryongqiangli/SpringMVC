@@ -1,4 +1,4 @@
-package system.web.controller;
+package system.web.controller.login;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,11 +22,11 @@ import system.web.service.LoginServiceI;
 import system.web.service.Sys_BaseUserServiceI;
 
 @Scope("prototype")
-@RequestMapping(params="/loginController")
+@RequestMapping("/loginController")
 @Controller
 public class LoginController extends BaseController{
 	@Autowired
-	LoginServiceI loginServiceI;
+	LoginServiceI LoginServiceI;
 	@Autowired
 	Sys_BaseUserServiceI Sys_BaseUserServiceI;
 	/**

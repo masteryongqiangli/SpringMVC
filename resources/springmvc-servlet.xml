@@ -52,7 +52,7 @@
 		</property>
 	</bean>
 
-
+	
 	<context:component-scan base-package="system.core.controller" />
 	<context:component-scan base-package="business.controller" />
 	<context:component-scan base-package="system.web.controller">
