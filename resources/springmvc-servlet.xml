@@ -53,9 +53,9 @@
 	</bean>
 
 	
-	<context:component-scan base-package="system.core.controller" />
-	<context:component-scan base-package="business.controller" />
-	<context:component-scan base-package="system.web.controller">
+	<context:component-scan base-package="system.core.*" />
+	<context:component-scan base-package="business.*" />
+	<context:component-scan base-package="system.web.*">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>

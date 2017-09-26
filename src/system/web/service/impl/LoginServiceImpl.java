@@ -14,7 +14,7 @@ import system.web.dao.LoginDaoI;
 import system.web.entity.Sys_BaseUser;
 import system.web.entity.Sys_User;
 import system.web.service.LoginServiceI;
-@Service("LoginServiceI")
+@Service("loginService")
 @Transactional
 public class LoginServiceImpl extends CommonServiceImpl implements LoginServiceI{
 	@Autowired

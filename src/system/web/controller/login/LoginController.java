@@ -26,9 +26,9 @@ import system.web.service.Sys_BaseUserServiceI;
 @Controller
 public class LoginController extends BaseController{
 	@Autowired
-	LoginServiceI LoginServiceI;
+	LoginServiceI loginService;
 	@Autowired
-	Sys_BaseUserServiceI Sys_BaseUserServiceI;
+	Sys_BaseUserServiceI sys_BaseUserServiceI;
 	/**
 	 * ÏµÍ³µÇÂ¼
 	 * @param request
@@ -49,11 +49,11 @@ public class LoginController extends BaseController{
 	@ResponseBody
 	public JSONObject checkLogin(HttpServletRequest request,Sys_BaseUser sys_BaseUser){
 		JSONObject jsonObject = new JSONObject();
-		Sys_BaseUser loginUser = Sys_BaseUserServiceI.getLoginUser(sys_BaseUser);
+		Sys_BaseUser loginUser = sys_BaseUserServiceI.getLoginUser(sys_BaseUser);
 		if (loginUser!=null) {
 			EncoderByMd5Util byMd5Util = new EncoderByMd5Util();
 			if (loginUser.getPassWord().equals((byMd5Util.endcoderByMd5Utile(sys_BaseUser.getPassWord())))) {
-				Sys_User sys_User = Sys_BaseUserServiceI.getSysUserById(loginUser.getUserId());
+				Sys_User sys_User = sys_BaseUserServiceI.getSysUserById(loginUser.getUserId());
 				request.getSession().setAttribute(loginStateTypeEnum.LOGIN_SUCCESS.getCode(), sys_User);
 				jsonObject.put("msg", loginStateTypeEnum.LOGIN_SUCCESS);
 			}else{

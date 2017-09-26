@@ -77,24 +77,35 @@
 			        url: 'loginController.do?checkLogin',
 			        data: {'userName':$("userName").val(),'passWord':$("#userPswd").val()},
 			        success: function (data) {
-			        	if(data.msg=="LOGIN_SUCCESS"){
+			        	if(data.msg=="NO_USER"){
+			        		loginFail();
+			        		$("#NO_USER").show();
+			        	}else if(data.msg=="ERROR_PASSWD"){
+			        		loginFail();
+			        		$("#ERROR_PASSWD").show();
+			        	}else if(data.msg=="LOGIN_SUCCESS"){
 			        		handler.unbind('mousedown');
 							$(document).unbind('mousemove');
 							$(document).unbind('mouseup');
+							text.text('登录成功,正在跳转...');
 			        	}
 			        },
 			        error:function(data){
-			        	handler.removeClass('handler_ok_bg').addClass('handler_bg');
-			        	handler.css({
-							'left' : 0
-						});
-						drag_bg.css({
-							'width' : 0
-						});
-						text.text('拖动滑块登录');
+			        	loginFail();
 						$("#LOGIN_ERROR").show();
 			        }
 			    });
+			}
+			
+			function loginFail(){
+				handler.removeClass('handler_ok_bg').addClass('handler_bg');
+	        	handler.css({
+					'left' : 0
+				});
+				drag_bg.css({
+					'width' : 0
+				});
+				text.text('拖动滑块登录');
 			}
 		};
 	})(jQuery);

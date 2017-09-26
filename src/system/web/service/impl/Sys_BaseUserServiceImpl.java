@@ -9,7 +9,7 @@ import system.web.dao.Sys_BaseUserDaoI;
 import system.web.entity.Sys_BaseUser;
 import system.web.entity.Sys_User;
 import system.web.service.Sys_BaseUserServiceI;
-@Service("Sys_BaseUserServiceI")
+@Service("sys_BaseUserService")
 @Transactional
 public class Sys_BaseUserServiceImpl extends CommonServiceImpl implements Sys_BaseUserServiceI{
 	@Autowired

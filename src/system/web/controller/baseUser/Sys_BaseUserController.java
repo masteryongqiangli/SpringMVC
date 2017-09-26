@@ -9,9 +9,9 @@ import system.core.controller.BaseController;
 import system.web.service.Sys_BaseUserServiceI;
 
 @Controller
-@RequestMapping(params="/sys_BaseUserController")
+@RequestMapping("/sys_BaseUserController")
 @Scope("prototype")
 public class Sys_BaseUserController extends BaseController{
 	@Autowired
-	Sys_BaseUserServiceI sys_BaseUserServiceI;
+	Sys_BaseUserServiceI sys_BaseUserService;
 }
