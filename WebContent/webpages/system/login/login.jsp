@@ -70,30 +70,19 @@
 				drag.css({
 					'color' : '#fff'
 				});
-				$.ajax({
-			        type: "post",
-			        cache:false, 
-			        async:false, 
-			        url: 'loginController.do?checkLogin',
-			        data: {'userName':$("userName").val(),'passWord':$("#userPswd").val()},
-			        success: function (data) {
-			        	if(data.msg=="NO_USER"){
-			        		loginFail();
-			        		$("#NO_USER").show();
-			        	}else if(data.msg=="ERROR_PASSWD"){
-			        		loginFail();
-			        		$("#ERROR_PASSWD").show();
-			        	}else if(data.msg=="LOGIN_SUCCESS"){
-			        		handler.unbind('mousedown');
-							$(document).unbind('mousemove');
-							$(document).unbind('mouseup');
-							text.text('登录成功,正在跳转...');
-			        	}
-			        },
-			        error:function(data){
-			        	loginFail();
-						$("#LOGIN_ERROR").show();
-			        }
+				$("#loginForm").ajaxSubmit(function (data){
+		        	if(data.msg=="NO_USER"){
+		        		loginFail();
+		        		$("#NO_USER").show();
+		        	}else if(data.msg=="ERROR_PASSWD"){
+		        		loginFail();
+		        		$("#ERROR_PASSWD").show();
+		        	}else if(data.msg=="LOGIN_SUCCESS"){
+		        		handler.unbind('mousedown');
+						$(document).unbind('mousemove');
+						$(document).unbind('mouseup');
+						text.text('登录成功,正在跳转...');
+		        	}
 			    });
 			}
 			
@@ -122,7 +111,7 @@
 					yongqiangli
 				</h1>
 			</div>
-			<form id="loginForm">
+			<form id="loginForm" action="loginController.do?checkLogin" method="post" >
 				<div class="middle">
 					<div class="userInput userNameClass">
 						<input id="userName" name="userName" type="text" placeholder="用户名"/>

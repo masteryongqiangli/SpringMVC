@@ -8,7 +8,8 @@
 	href="Res/jquery-easyui-1.5.1/easyuiloading.css">
 <script type="text/javascript"
 	src="Res/jquery-easyui-1.5.1/easyuiloading.js"></script>
-	<script type="text/javascript">
+<script type="text/javascript" src="Res/jquery.form.js"></script>
+	<script type="text/javascript" >
 	$(function() {
  		if('${auth.addAuth}'!='true'){
 			$('#add').remove();
