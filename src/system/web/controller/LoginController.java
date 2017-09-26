@@ -32,7 +32,6 @@ public class LoginController extends BaseController{
 	/**
 	 * ÏµÍ³µÇÂ¼
 	 * @param request
-	 * @return {@link ModelAndView}
 	 */
 	@RequestMapping(params="login")
 	@ResponseBody
