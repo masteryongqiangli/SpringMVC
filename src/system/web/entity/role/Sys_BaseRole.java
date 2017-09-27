@@ -1,4 +1,4 @@
-package system.web.entity;
+package system.web.entity.role;
 
 import java.io.Serializable;
 

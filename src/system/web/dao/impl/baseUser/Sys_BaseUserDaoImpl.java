@@ -1,4 +1,4 @@
-package system.web.dao.impl;
+package system.web.dao.impl.baseUser;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,9 +8,9 @@ import org.hibernate.SQLQuery;
 import org.springframework.stereotype.Repository;
 
 import system.core.dao.impl.BaseDaoImpl;
-import system.web.dao.Sys_BaseUserDaoI;
-import system.web.entity.Sys_BaseUser;
-import system.web.entity.Sys_User;
+import system.web.dao.baseUser.Sys_BaseUserDaoI;
+import system.web.entity.baseUser.Sys_BaseUser;
+import system.web.entity.user.Sys_User;
 @Repository
 public class Sys_BaseUserDaoImpl extends BaseDaoImpl implements Sys_BaseUserDaoI{
 	@Override

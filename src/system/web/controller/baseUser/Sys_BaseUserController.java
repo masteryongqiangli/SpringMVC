@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import system.core.controller.BaseController;
-import system.web.service.Sys_BaseUserServiceI;
+import system.web.service.baseUser.Sys_BaseUserServiceI;
 
 @Controller
 @RequestMapping("/sys_BaseUserController")

@@ -1,9 +1,9 @@
-package system.web.service;
+package system.web.service.login;
 
 import javax.servlet.http.HttpServletRequest;
 
 import system.core.service.CommonServiceI;
-import system.web.entity.Sys_BaseUser;
+import system.web.entity.baseUser.Sys_BaseUser;
 
 public interface LoginServiceI extends CommonServiceI{
 	/**

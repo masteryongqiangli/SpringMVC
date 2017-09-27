@@ -1,4 +1,4 @@
-package system.web.entity;
+package system.web.entity.roleUser;
 
 import java.io.Serializable;
 import javax.persistence.Column;

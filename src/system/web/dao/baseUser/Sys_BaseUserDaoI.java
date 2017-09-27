@@ -1,10 +1,10 @@
-package system.web.dao;
+package system.web.dao.baseUser;
 
 import java.util.List;
 
 import system.core.dao.BaseDaoI;
-import system.web.entity.Sys_BaseUser;
-import system.web.entity.Sys_User;
+import system.web.entity.baseUser.Sys_BaseUser;
+import system.web.entity.user.Sys_User;
 
 public interface Sys_BaseUserDaoI extends BaseDaoI{
 

@@ -11,8 +11,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import system.core.enums.loginStateTypeEnum;
-import system.web.entity.Sys_BaseRole;
-import system.web.entity.Sys_User;
+import system.web.entity.role.Sys_BaseRole;
+import system.web.entity.user.Sys_User;
 /**
  * 
  * @author yongqiangli

@@ -1,8 +1,8 @@
-package system.web.service;
+package system.web.service.baseUser;
 
 import system.core.service.CommonServiceI;
-import system.web.entity.Sys_BaseUser;
-import system.web.entity.Sys_User;
+import system.web.entity.baseUser.Sys_BaseUser;
+import system.web.entity.user.Sys_User;
 
 public interface Sys_BaseUserServiceI extends CommonServiceI{
 

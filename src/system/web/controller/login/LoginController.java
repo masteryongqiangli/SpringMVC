@@ -17,10 +17,10 @@ import system.core.controller.BaseController;
 import system.core.enums.loginStateTypeEnum;
 import system.core.util.EncoderByMd5Util;
 import system.core.util.ResourceUtil;
-import system.web.entity.Sys_BaseUser;
-import system.web.entity.Sys_User;
-import system.web.service.LoginServiceI;
-import system.web.service.Sys_BaseUserServiceI;
+import system.web.entity.baseUser.Sys_BaseUser;
+import system.web.entity.user.Sys_User;
+import system.web.service.baseUser.Sys_BaseUserServiceI;
+import system.web.service.login.LoginServiceI;
 
 @Scope("prototype")
 @RequestMapping("/loginController")

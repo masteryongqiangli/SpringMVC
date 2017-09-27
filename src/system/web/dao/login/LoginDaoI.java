@@ -1,9 +1,9 @@
-package system.web.dao;
+package system.web.dao.login;
 
 import java.util.Map;
 
 import system.core.dao.BaseDaoI;
-import system.web.entity.Sys_BaseUser;
+import system.web.entity.baseUser.Sys_BaseUser;
 
 public interface LoginDaoI extends BaseDaoI{
 	/**

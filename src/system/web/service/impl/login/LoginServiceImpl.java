@@ -1,4 +1,4 @@
-package system.web.service.impl;
+package system.web.service.impl.login;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import system.core.service.impl.CommonServiceImpl;
-import system.web.dao.LoginDaoI;
-import system.web.entity.Sys_BaseUser;
-import system.web.entity.Sys_User;
-import system.web.service.LoginServiceI;
+import system.web.dao.login.LoginDaoI;
+import system.web.entity.baseUser.Sys_BaseUser;
+import system.web.entity.user.Sys_User;
+import system.web.service.login.LoginServiceI;
 @Service("loginService")
 @Transactional
 public class LoginServiceImpl extends CommonServiceImpl implements LoginServiceI{

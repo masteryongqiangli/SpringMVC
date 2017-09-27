@@ -1,4 +1,4 @@
-package system.web.entity;
+package system.web.entity.user;
 
 import java.io.Serializable;
 
