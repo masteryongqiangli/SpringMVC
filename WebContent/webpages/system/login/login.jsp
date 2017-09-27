@@ -90,6 +90,7 @@
 							$(document).unbind('mousemove');
 							$(document).unbind('mouseup');
 							text.text('登录成功,正在跳转...');
+							window.location.href = 'loginController.do?login';
 			        	}
 				    },
 				    error:function(data){

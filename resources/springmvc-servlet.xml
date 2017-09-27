@@ -85,7 +85,9 @@
 				<property name="excludeUrls">
 					<list>
 						<value>loginController.do?checkLogin</value>
-						<value>login.do?null</value>
+						<value>loginController.do?login</value>
+						<value>loginController.do?null</value>
+						<value>loginController.do?logout</value>
 					</list>
 				</property>
 			</bean>

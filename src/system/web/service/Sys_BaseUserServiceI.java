@@ -10,4 +10,6 @@ public interface Sys_BaseUserServiceI extends CommonServiceI{
 
 	public Sys_User getSysUserById(String userId);
 
+	public void logout();
+
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import system.core.service.impl.CommonServiceImpl;
+import system.core.util.ResourceUtil;
 import system.web.dao.Sys_BaseUserDaoI;
 import system.web.entity.Sys_BaseUser;
 import system.web.entity.Sys_User;
@@ -22,7 +23,12 @@ public class Sys_BaseUserServiceImpl extends CommonServiceImpl implements Sys_Ba
 
 	@Override
 	public Sys_User getSysUserById(String userId) {
-		return null;
+		return Sys_BaseUserDaoI.getSysUserById(userId).get(0);
+	}
+
+	@Override
+	public void logout() {
+	 ResourceUtil.Session().invalidate();
 	}
 	
 }
