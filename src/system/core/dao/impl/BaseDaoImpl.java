@@ -122,7 +122,11 @@ public class BaseDaoImpl implements BaseDaoI{
 		Criteria criteria = this.createCriteria(entityClass);
 		Disjunction disjunction = Restrictions.disjunction();
 		for(String key:dataMap.keySet()){
-			disjunction.add(Restrictions.eq(key, dataMap.get(key)));
+			if (key.equals("state")) {
+				disjunction.add(Restrictions.eq(key, Integer.parseInt(dataMap.get(key))));
+			}else{
+				disjunction.add(Restrictions.eq(key, dataMap.get(key)));
+			}
 		}
 		if (!pageMap.isEmpty()) {
 			int pageNumber = Integer.parseInt(pageMap.get("page"));

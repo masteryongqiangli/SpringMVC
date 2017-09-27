@@ -9,7 +9,9 @@
 <link rel="shortcut icon" href="Res/favicon.ico" />
 <link rel="bookmark" href="Res/favicon.ico" />
 <link href="Res/styles/main/main.css" rel="stylesheet" />
-<script src="Res/js/main/main.js"></script>
+<link href="Res/styles/main/menu.css" rel="stylesheet" />
+<script type="text/javascript" src="Res/js/main/main.js"></script>
+<script type="text/javascript" src="Res/js/main/menu.js"></script>
 <title>yongqiangli</title>
 </head>
 <body style="overflow-y: hidden;">
@@ -55,10 +57,7 @@
 	<!-- 中间部分 -->
 	<div id="middle" class="m-middle">
 		<!-- 左边导航 -->
-		<div class="m-leftnav">
-			<dl id="menulist">
-
-			</dl>
+		<div class="m-leftnav" id="menulist">
 		</div>
 		<!-- 右边内容 -->
 		<div class="m-right"></div>
@@ -222,13 +221,26 @@
 			}
 
 		}
+		/*请求菜单数据*/
 		function getUserMenuList() {
 			startTime();
-			$.post("menuController.do?getUserMenuList", {
-
-			}, function(data, status) {
-				makemenu(data)
-			}, 'json');
+			var temp;
+			$.ajax({
+			    type : "POST",
+			    url : "sys_BaseMenuController.do?getMenuList",
+			    dataType : 'json',
+			    success : function(data){
+			    	makemenu(data)
+			    },
+			    error:function(data){
+			    	$.messager.show({
+			    		title:'提示信息',
+			    		msg:'加载菜单失败,请联系管理员',
+			    		timeout:5000,
+			    		showType:'slide'
+			    	})
+			    }
+			});
 		}
 		function startTime() {
 			var today = new Date()
@@ -251,35 +263,28 @@
 			}
 			return i
 		}
+		/*加载菜单*/
 		function makemenu(data) {
 			var html = '';
+			var commonStr = '<ul id="accordion" class="accordion">'
+			var commonStr1 = '<li><div class="link"><i class="fa fa-paint-brush"></i>'
+			var commonStr2 = '<i class="fa fa-chevron-down"></i></div>';
+			var commonStr3 = '<ul class="submenu">';
+			var commonStr4 = '</ul>';
+			var commonStr5 = '</li>';
+			html+=commonStr;
 			for (var i = 0; i < data.length; i++) {
-				if (data[i].children.length == 0) {
-					html += '<dt><a href="javascript:void(0)" onclick="addTab(\''
-							+ data[i].menuId
-							+ '\',\''
-							+ data[i].menuName
-							+ '\',\''
-							+ data[i].menuUrl
-							+ '\',true)"><i class="iconfont"></i>'
-							+ data[i].menuName + '</a></dt>';
+				if (data[i].sonMenu.length == 0) {
+					html += commonStr1+data[i].menuName+commonStr2;
 				} else {
-					html += '<dt><a href="javascript:void(0)" ><i class="iconfont"></i>'
-							+ data[i].menuName + '</a></dt>';
-					html += '<dd><div class="nav-chirld"><h2><i class="iconfont"></i>'
-							+ data[i].menuName + '<ul>';
-					for (var j = 0; j < data[i].children.length; j++) {
-						html += '<li><a href="javascript:void(0)" onclick="addTab(\''
-								+ data[i].children[j].menuId
-								+ '\',\''
-								+ data[i].children[j].menuName
-								+ '\',\''
-								+ data[i].children[j].menuUrl
-								+ '\',true)"><i class="iconfont"></i>'
-								+ data[i].children[j].menuName + '</a></li>';
+					html += commonStr1+data[i].menuName+commonStr2+commonStr3;
+					for(var j=0;j<data[i].sonMenu.length;j++){
+						var sonObj = data[i].sonMenu[j];
+						html+='<li><a href="#">'+sonObj.menuName+'</a></li>';
 					}
-					html += '</ul></div></dd>';
+					html+=commonStr4;
 				}
+				html+=commonStr5;
 			}
 			$('#menulist').html(html);
 			refreshmenu();
