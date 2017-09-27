@@ -79,6 +79,12 @@
 	</div>
 
 	<script>
+		$(function(){
+			$('.link').click(function(){
+				alert(1)
+				$(this).next().css('display','block')
+			})
+		})
 		function changeColor() {
 			$('.m-header').css('background',
 					'url(\"../../images/main/bg/topbg-orange.jpg\") repeat-x');
@@ -173,7 +179,7 @@
 		$(".js-btnbox .js-btn").click(function() {
 			$(this).parent().addClass("on").siblings().removeClass("on");
 		})
-		addTab('home', '首页', 'loginController.do?goHome', false);
+		//addTab('home', '首页', 'loginController.do?goHome', false);
 		function logout() {
 			$.messager.confirm('确认?', '您确定退出该系统吗？', function(r) {
 				if (r) {
@@ -267,7 +273,7 @@
 		function makemenu(data) {
 			var html = '';
 			var commonStr = '<ul id="accordion" class="accordion">'
-			var commonStr1 = '<li><div class="link"><i class="fa fa-paint-brush"></i>'
+			var commonStr1 = '<li><div class="link" onclick="closeAndOpen()"><i class="fa fa-paint-brush"></i>'
 			var commonStr2 = '<i class="fa fa-chevron-down"></i></div>';
 			var commonStr3 = '<ul class="submenu">';
 			var commonStr4 = '</ul>';
@@ -298,6 +304,9 @@
 				"height" : parseInt($('.m-right').height())
 			});
 		});
+		function closeAndOpen(){
+			alert(1)
+		}
 	</script>
 </body>
 </html>
