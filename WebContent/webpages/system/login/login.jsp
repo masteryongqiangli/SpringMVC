@@ -64,26 +64,40 @@
 			});
 
 			//清空事件
+			var post_flag=false;
 			function dragOk() {
 				handler.removeClass('handler_bg').addClass('handler_ok_bg');
 				text.text('系统登录中....');
 				drag.css({
 					'color' : '#fff'
 				});
-				$("#loginForm").ajaxSubmit(function (data){
-		        	if(data.msg=="NO_USER"){
-		        		loginFail();
-		        		$("#NO_USER").show();
-		        	}else if(data.msg=="ERROR_PASSWD"){
-		        		loginFail();
-		        		$("#ERROR_PASSWD").show();
-		        	}else if(data.msg=="LOGIN_SUCCESS"){
-		        		handler.unbind('mousedown');
-						$(document).unbind('mousemove');
-						$(document).unbind('mouseup');
-						text.text('登录成功,正在跳转...');
-		        	}
-			    });
+				if(post_flag) return;
+				post_flag=true;
+				$("#loginForm").ajaxSubmit({         
+					type: 'post',
+					dataType : "json", 
+				    data: {},
+				    success: function(data) {
+				    	post_flag = false;
+				    	if(data.msg=="NO_USER"){
+			        		loginFail();
+			        		$("#NO_USER").show();
+			        	}else if(data.msg=="ERROR_PASSWD"){
+			        		loginFail();
+			        		$("#ERROR_PASSWD").show();
+			        	}else if(data.msg=="LOGIN_SUCCESS"){
+			        		handler.unbind('mousedown');
+							$(document).unbind('mousemove');
+							$(document).unbind('mouseup');
+							text.text('登录成功,正在跳转...');
+			        	}
+				    },
+				    error:function(data){
+				    	post_flag = false;
+				    	loginFail();
+				    	$("#LOGIN_ERROR").show();
+				    }
+				})
 			}
 			
 			function loginFail(){

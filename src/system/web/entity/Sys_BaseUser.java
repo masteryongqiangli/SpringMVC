@@ -10,6 +10,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.sun.istack.internal.NotNull;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Sys_BaseUser")
@@ -24,8 +26,8 @@ public class Sys_BaseUser implements Serializable {
 	private String realName;
 	private String email;
 	private String phone;
-	private int state;
-	private int version;
+	private Integer state;
+	private Integer version;
 
 	@Id
 	@GenericGenerator(name = "systemUUID", strategy = "uuid")
@@ -106,6 +108,21 @@ public class Sys_BaseUser implements Serializable {
 	public String getEmail() {
 		return email;
 	}
+	@Column(length = 10)
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+	@Column(length = 10)
+	public Integer getVersion() {
+		return version;
+	}
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 
 	public void setEmail(String email) {
 		this.email = email;
@@ -120,21 +137,4 @@ public class Sys_BaseUser implements Serializable {
 		this.phone = phone;
 	}
 
-	@Column(length = 10)
-	public int getState() {
-		return state;
-	}
-
-	public void setState(int state) {
-		this.state = state;
-	}
-
-	@Column(length = 10)
-	public int getVersion() {
-		return version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
-	}
 }
