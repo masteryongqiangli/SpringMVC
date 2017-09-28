@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="shortcut icon" href="Res/favicon.ico" />
-<link rel="bookmark" href="Res/favicon.ico" />
+<link rel="shortcut icon" href="Res/web.ico" />
+<link rel="bookmark" href="Res/web.ico" />
 <link href="Res/styles/main/main.css" rel="stylesheet" />
 <link href="Res/styles/main/menu.css" rel="stylesheet" />
 <script type="text/javascript" src="Res/js/main/main.js"></script>
@@ -87,9 +87,34 @@
 			})
 		})
 		function changeColor() {
-			$('.m-header').css('background',
-					'url(\"../../images/main/bg/topbg-orange.jpg\") repeat-x');
+			var array = new Array();
+			array.push('#6495ED');
+			array.push('#7BB57B');
+			array.push('#4685B9');
+			array.push('#708090');
+			var i = array.indexOf(RGBToHex($('.m-header').css('background-color')));
+			$('.m-header').css('background-color',(i+1)==array.length?array[0]:array[i+1]);
+			$('.m-nav li a').css('border-color',(i+1)==array.length?array[0]:array[i+1])
 		}
+		function RGBToHex(rgb){ 
+			   var regexp = /[0-9]{0,3}/g;  
+			   var re = rgb.match(regexp);
+			   var hexColor = "#"; var hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];  
+			   for (var i = 0; i < re.length; i++) {
+			        var r = null, c = re[i], l = c; 
+			        var hexAr = [];
+			        while (c > 16){  
+			              r = c % 16;  
+			              c = (c / 16) >> 0; 
+			              hexAr.push(hex[r]);  
+			         } hexAr.push(hex[c]);
+			         if(l < 16&&l != ""){        
+			             hexAr.push(0)
+			         }
+			       hexColor += hexAr.reverse().join(''); 
+			    }  
+			   return hexColor;  
+			} 
 		//控制高度
 		function resetHeight() {
 			$('#middle').height(document.documentElement.clientHeight - 156);
@@ -162,7 +187,7 @@
 		$(".js-btnbox .js-btn").click(function() {
 			$(this).parent().addClass("on").siblings().removeClass("on");
 		})
-		//addTab('home', '首页', 'loginController.do?goHome', false);
+		addTab('home', '首页', 'loginController.do?goHome', false);
 		function logout() {
 			$.messager.confirm('确认?', '您确定退出该系统吗？', function(r) {
 				if (r) {
@@ -270,7 +295,8 @@
 					html += commonStr1+data[i].icon+commonStrFa+data[i].menuName+commonStr2+commonStr3;
 					for(var j=0;j<data[i].sonMenu.length;j++){
 						var sonObj = data[i].sonMenu[j];
-						html+='<li><a href="#">'+sonObj.menuName+'</a></li>';
+						var id="a"+i.toString();
+						html+='<li><a href="javascript:void(0)" onclick="addTab(\''+id+'\', \''+sonObj.menuName+'\', \''+sonObj.menuUrl+'\', false)">'+sonObj.menuName+'</a></li>';
 					}
 					html+=commonStr4;
 				}

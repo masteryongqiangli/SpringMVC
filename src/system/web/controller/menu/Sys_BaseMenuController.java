@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import system.core.annotation.Log;
 import system.web.entity.menu.Sys_BaseMenu;
@@ -29,5 +30,11 @@ public class Sys_BaseMenuController {
 	@Log(operationName="查询菜单",operationType=0)
 	public JSONArray getMenuList(HttpServletRequest request){
 		return sys_BaseMenuServiceI.getMenuList();
+	}
+	@ResponseBody
+	@RequestMapping(params="list")
+	@Log(operationName="跳转菜单页面",operationType=0)
+	public ModelAndView list(HttpServletRequest request){
+		return new ModelAndView("system/menu/menuList");
 	}
 }

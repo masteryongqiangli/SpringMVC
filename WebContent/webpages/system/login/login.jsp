@@ -9,6 +9,8 @@
 <%@include file="/webpages/easyuipage.jsp"%>
 <%@include file="/webpages/baselist.jsp"%>
 <link rel="stylesheet" type="text/css" href="Res/styles/login/login.css">
+<link rel="shortcut icon" href="Res/web.ico" />
+<link rel="bookmark" href="Res/web.ico" />
 <script type="text/javascript">
 	(function($) {
 		$.fn.drag = function(options) {

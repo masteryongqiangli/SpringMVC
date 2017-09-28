@@ -78,4 +78,10 @@ public class LoginController extends BaseController{
 		}
 		return jsonObject;
 	}
+	@RequestMapping(params="goHome")
+	@ResponseBody
+	@Log(operationName="Ìø×ªÊ×Ò³",operationType=0)
+	public ModelAndView goHome(HttpServletRequest request){
+		return new ModelAndView("system/main/home");
+	}
 }

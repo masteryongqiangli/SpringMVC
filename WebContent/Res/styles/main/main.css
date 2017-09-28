@@ -25,7 +25,7 @@ img{vertical-align: middle;}
 .g-textohide{text-overflow: ellipsis;-ms-text-overflow: ellipsis;-o-text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
 
 /* 外部 */
-.m-header{height:80px;background:url("../../images/main/bg/topbg.jpg") repeat-x;color: #fff;clear: both;white-space: nowrap;overflow: hidden;min-width:1130px;}
+.m-header{height:80px;background-color: cornflowerblue;color: #fff;clear: both;white-space: nowrap;overflow: hidden;min-width:1130px;}
 .m-header h1{float:left;width:381px;height:80px;}
 .m-header h1 a{display:block;width:100%;height:100%;}
 .m-header h1 a img{height:80px;}
@@ -38,7 +38,7 @@ img{vertical-align: middle;}
 .m-nav li a:hover{border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.1)}
 .m-nav li a i{font-size:24px;line-height:24px;}
 .m-nav li a span{display:block;line-height:14px;margin-top:6px;}
-.m-header .head-user{ position: fixed;top:0;right:0;z-index:1;width:124px;height:80px;background:url("../../images/main/bg/headborder.jpg") repeat-y left;background-color: #249be8;padding: 0 5px 0 15px;cursor:pointer;}
+.m-header .head-user{ position: fixed;top:0;right:0;z-index:1;width:124px;height:80px;padding: 0 5px 0 15px;cursor:pointer;}
 .m-header .head-user img{width:50px;height:50px;margin-top:13px; border:2px solid #83c2f2;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;}
 .m-header .head-user .user-info{margin-right:10px;width:50px;text-align:center}
 .m-header .head-user .user-info h3{margin-top:21px;line-height: 40px;width: 50px;}
