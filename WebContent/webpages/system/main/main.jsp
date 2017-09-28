@@ -296,7 +296,7 @@
 					for(var j=0;j<data[i].sonMenu.length;j++){
 						var sonObj = data[i].sonMenu[j];
 						var id="a"+i.toString();
-						html+='<li><a href="javascript:void(0)" onclick="addTab(\''+id+'\', \''+sonObj.menuName+'\', \''+sonObj.menuUrl+'\', false)">'+sonObj.menuName+'</a></li>';
+						html+='<li><a href="javascript:void(0)" onclick="addTab(\''+id+'\', \''+sonObj.menuName+'\', \''+sonObj.menuUrl+'\', true)">'+sonObj.menuName+'</a></li>';
 					}
 					html+=commonStr4;
 				}

@@ -12,10 +12,10 @@
 	<script type="text/javascript" >
 	$(function() {
  		if('${auth.addAuth}'!='true'){
-			$('#add').remove();
-			if('${auth.updateAuth}'!='true'&&'${auth.delAuth}'!='true'){
+			/* $('#add').remove(); */
+			/* if('${auth.updateAuth}'!='true'&&'${auth.delAuth}'!='true'){
 				$('#'+$('.box').find('.datagrid-f').attr('id')).datagrid('hideColumn','opt')
-			}
+			} */
 		}
 	});
 	 

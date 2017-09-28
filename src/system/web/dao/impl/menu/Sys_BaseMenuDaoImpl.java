@@ -19,4 +19,13 @@ public class Sys_BaseMenuDaoImpl extends BaseDaoImpl implements Sys_BaseMenuDaoI
 		dataMap.put("state", "1");
 		return getListByItems(Sys_BaseMenu.class, dataMap, pageMap);
 	}
+
+	@Override
+	public List<Sys_BaseMenu> getMenuById(String menuID) {
+		Map<String, String> dataMap = new HashMap<String, String>();
+		dataMap.put("menuID", menuID);
+		dataMap.put("state", "1");
+		Map<String, String> pageMap = new HashMap<String, String>();
+		return getListByItems(Sys_BaseMenu.class, dataMap, pageMap);
+	}
 }

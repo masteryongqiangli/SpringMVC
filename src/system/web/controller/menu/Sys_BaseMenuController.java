@@ -1,7 +1,5 @@
 package system.web.controller.menu;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import net.sf.json.JSONArray;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import system.core.annotation.Log;
+import system.core.util.QueryParmFormat;
 import system.web.entity.menu.Sys_BaseMenu;
 import system.web.service.menu.Sys_BaseMenuServiceI;
 
@@ -36,5 +35,20 @@ public class Sys_BaseMenuController {
 	@Log(operationName="跳转菜单页面",operationType=0)
 	public ModelAndView list(HttpServletRequest request){
 		return new ModelAndView("system/menu/menuList");
+	}
+	@ResponseBody
+	@RequestMapping(params="dataGrid")
+	@Log(operationName="加载数据",operationType=0)
+	public JSONObject dataGrid(HttpServletRequest request){
+		return sys_BaseMenuServiceI.getMenuDataGrid();
+	}
+	@ResponseBody
+	@RequestMapping(params="goAddorUpdate")
+	@Log(operationName="跳转页面",operationType=0)
+	public ModelAndView goAddorUpdate(HttpServletRequest request,Sys_BaseMenu sys_BaseMenu){
+		if (sys_BaseMenu.getMenuID()!=null) {
+			request.setAttribute("menu", sys_BaseMenuServiceI.getMenuById(sys_BaseMenu.getMenuID()));
+		}
+		return new ModelAndView("system/menu/menu-addAndUpdate");
 	}
 }
