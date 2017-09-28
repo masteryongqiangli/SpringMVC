@@ -12,6 +12,7 @@
 <link href="Res/styles/main/menu.css" rel="stylesheet" />
 <script type="text/javascript" src="Res/js/main/main.js"></script>
 <script type="text/javascript" src="Res/js/main/menu.js"></script>
+<link href="Res/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 <title>yongqiangli</title>
 </head>
 <body style="overflow-y: hidden;">
@@ -120,24 +121,6 @@
 			$(".m-leftnav dl dd").hide();
 			$(".m-leftnav dl dt a").removeClass("hover")
 		})
-		function refreshmenu() {
-			//左边菜单控制
-			$(".m-leftnav dl dt a").click(function() {
-				$(".m-leftnav dl dt a").removeClass("on");
-				$(this).addClass("on");
-			})
-			$(".m-leftnav dl dt a").mouseenter(function() {
-				if ($(this).parents("dt").next("dd").is(":hidden")) {
-					$(".m-leftnav dl dt a").removeClass("hover");
-					$(".m-leftnav dl dd").hide();
-					$(this).addClass("hover").parent().next("dd").show();
-				}
-			})
-			$(".m-leftnav dl").mouseleave(function() {
-				$(".m-leftnav dl dd").hide();
-				$(".m-leftnav dl dt a").removeClass("hover")
-			})
-		}
 		//消息
 		$(function() {
 			$(".js-message .m-rightfixed").click(function() {
@@ -272,8 +255,9 @@
 		/*加载菜单*/
 		function makemenu(data) {
 			var html = '';
-			var commonStr = '<ul id="accordion" class="accordion">'
-			var commonStr1 = '<li><div class="link" onclick="closeAndOpen()"><i class="fa fa-paint-brush"></i>'
+			var commonStr = '<ul id="accordion" class="accordion">';
+			var commonStr1 = '<li><div class="link"><i class="fa ';
+			var commonStrFa = '"></i>';
 			var commonStr2 = '<i class="fa fa-chevron-down"></i></div>';
 			var commonStr3 = '<ul class="submenu">';
 			var commonStr4 = '</ul>';
@@ -281,9 +265,9 @@
 			html+=commonStr;
 			for (var i = 0; i < data.length; i++) {
 				if (data[i].sonMenu.length == 0) {
-					html += commonStr1+data[i].menuName+commonStr2;
+					html += commonStr1+data[i].icon+commonStrFa+data[i].menuName+commonStr2;
 				} else {
-					html += commonStr1+data[i].menuName+commonStr2+commonStr3;
+					html += commonStr1+data[i].icon+commonStrFa+data[i].menuName+commonStr2+commonStr3;
 					for(var j=0;j<data[i].sonMenu.length;j++){
 						var sonObj = data[i].sonMenu[j];
 						html+='<li><a href="#">'+sonObj.menuName+'</a></li>';
@@ -295,7 +279,30 @@
 			$('#menulist').html(html);
 			refreshmenu();
 		}
+		/*父级菜单绑定点击事件*/
+		function refreshmenu() {
+			var Accordion = function(el, multiple) {
+				this.el = el || {};
+				this.multiple = multiple || false;
+				var links = this.el.find('.link');
+				links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+			}
 
+			Accordion.prototype.dropdown = function(e) {
+				var $el = e.data.el;
+					$this = $(this),
+					$next = $this.next();
+
+				$next.slideToggle();
+				$this.parent().toggleClass('open');
+
+				if (!e.data.multiple) {
+					$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+				};
+			}	
+
+			var accordion = new Accordion($('#accordion'), false);
+		}
 		$(window).resize(function() {
 			$('.content').css({
 				"padding" : "0px",
@@ -304,9 +311,6 @@
 				"height" : parseInt($('.m-right').height())
 			});
 		});
-		function closeAndOpen(){
-			alert(1)
-		}
 	</script>
 </body>
 </html>

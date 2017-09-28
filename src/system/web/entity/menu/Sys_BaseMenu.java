@@ -16,6 +16,7 @@ public class Sys_BaseMenu {
 	private String parentMenuID;
 	private Integer orderNum;
 	private Integer state;
+	private String icon;
 	@Id
 	@Column(length=50)
 	@GenericGenerator(name="systemUUID",strategy="uuid")
@@ -60,5 +61,12 @@ public class Sys_BaseMenu {
 	}
 	public void setState(Integer state) {
 		this.state = state;
+	}
+	@Column(length=50)
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 }
